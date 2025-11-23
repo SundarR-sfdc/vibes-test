@@ -24,3 +24,9 @@ pandoc docs/accountFlexCard-design.md -o docs/accountFlexCard-design.pdf
 Or convert HTML to PDF using Google Chrome headless (macOS):
 /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --headless --disable-gpu --print-to-pdf=docs/accountFlexCard-design.pdf docs/accountFlexCard-design.html
 Developer README (component)
+
+<img width="2858" height="1790" alt="image" src="https://github.com/user-attachments/assets/66b77be4-4ed1-4f20-b336-31f202acf474" />
+
+<img width="2880" height="1496" alt="image" src="https://github.com/user-attachments/assets/5966bbcd-ec99-461b-8c98-7472a649c833" />
+
+<img width="2870" height="1434" alt="image" src="https://github.com/user-attachments/assets/73b6a2a4-6bd6-498d-9b94-cdef2c1b1fb6" />
