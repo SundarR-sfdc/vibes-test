@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Account Flex Card — Design & Admin Guide</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; color:#172b4d; padding:24px; }
+    h1 { font-size:24px }
+    pre { background:#f4f6f9; padding:12px; border-radius:6px; }
+    .screenshot { max-width:800px; border:1px solid #e6eef6; margin:8px 0; }
+  </style>
+</head>
+<body>
+  <h1>Account Flex Card — Design & Admin Guide</h1>
+  <p><strong>Overview</strong></p>
+  <p><strong>Purpose:</strong> A compact Lightning Web Component (LWC) used on Account record pages to display key account details in a flex-card style. It is admin-configurable from the Lightning App Builder and shows optional related lists (Contacts, Opportunities), an icon/logo, and quick actions (Edit/Open/View All related lists).</p>
+  <p><strong>Location (code):</strong> <code>force-app/main/default/lwc/accountFlexCard/</code></p>
+  <p><strong>Deployed to:</strong> org alias <code>vsCodeOrg</code>.</p>
+
+  <h2>Visual (wireframe)</h2>
+  <pre>
+    ┌───────────────────────────────────────────────┐
+    │ ● (logo)   Account Details                    │
+    │ --------------------------------------------- │
+    │ Name: Acme Co.            Industry: Tech      │
+    │ Phone: (555) 555-5555     Website: acme.com   │
+    │ Billing Address: 123 Main St, City, ST 12345  │
+    │ Annual Revenue: $1,000,000                   │
+    │                                               │
+    │ Contacts                                      │
+    │  - Jane Doe        jane@acme.com • (555) 111  │
+    │  - John Smith      john@acme.com • (555) 222  │
+    │  [View All]                                    │
+    │                                               │
+    │ [Edit] [Open]                                 │
+    └───────────────────────────────────────────────┘
+  </pre>
+
+  <h2>Screenshots (placeholders)</h2>
+  <p>Replace these placeholders with actual screenshots captured from your org. Save images under <code>docs/images/</code> and re-open this HTML or the Markdown file to view them.</p>
+  <img src="images/app-builder.png" alt="App Builder" class="screenshot"/>
+  <img src="images/account-page.png" alt="Account Page" class="screenshot"/>
+  <img src="images/clearbit-network.png" alt="Network request" class="screenshot"/>
+
+  <h2>Files & code references</h2>
+  <ul>
+    <li><code>accountFlexCard.js</code> — component logic, <code>@api</code> properties, UI API reads, navigation handlers.</li>
+    <li><code>accountFlexCard.html</code> — template with conditional rendering and related lists.</li>
+    <li><code>accountFlexCard.css</code> — styling (round logo, grid, related-list styling).</li>
+    <li><code>accountFlexCard.js-meta.xml</code> — metadata: exposes design properties to Lightning App Builder.</li>
+  </ul>
+
+  <h2>Admin-facing configuration (what you see in App Builder)</h2>
+  <ul>
+    <li>Show Name</li>
+    <li>Show Industry</li>
+    <li>Show Phone</li>
+    <li>Show Website</li>
+    <li>Show Billing Address</li>
+    <li>Show Annual Revenue</li>
+    <li>Show Contacts (related list)</li>
+    <li>Show Opportunities (related list)</li>
+    <li>Logo URL (optional)</li>
+  </ul>
+
+  <h2>How to change settings (quick steps)</h2>
+  <ol>
+    <li>Open an Account record → Gear → Edit Page (Lightning App Builder).</li>
+    <li>Select <code>accountFlexCard</code> on the canvas.</li>
+    <li>Use the Properties pane on the right to toggle fields and paste <code>Logo URL</code>.</li>
+    <li>Set Component Visibility if needed.</li>
+    <li>Save → Back → Refresh Account record.</li>
+  </ol>
+
+  <h2>Design details — <code>@api</code> usage and rationale</h2>
+  <p>The component declares public properties with <code>@api</code>. These are mapped to metadata <code>&lt;property&gt;</code> entries in the component's <code>.js-meta.xml</code> file, and appear in App Builder as editable controls. This makes the component declarative and admin-configurable without redeploy.</p>
+
+  <h2>Comparison with alternatives</h2>
+  <p><strong>Custom Metadata / Settings:</strong> Good for global defaults but not per-page customization. Requires extra setup and often Apex to fetch.</p>
+  <p><strong>Developer-only config:</strong> Simple but requires redeploy for every change; not admin-friendly.</p>
+
+  <h2>Troubleshooting</h2>
+  <ul>
+    <li>Component not listed: ensure <code>.js-meta.xml</code> has <code>&lt;isExposed&gt;true&lt;/isExposed&gt;</code> and targets.</li>
+    <li>Blank fields: check Field-Level Security for the running user.</li>
+    <li>Logo blocked: upload as static resource or ensure CSP allows external images.</li>
+  </ul>
+
+  <h2>Command-line tips</h2>
+  <pre> sfdx force:source:deploy -p force-app/main/default/lwc/accountFlexCard -u vsCodeOrg </pre>
+
+  <h2>Future enhancements</h2>
+  <ul>
+    <li>Pagination for related lists</li>
+    <li>Configurable related-list columns</li>
+    <li>Custom Metadata defaults with per-page overrides</li>
+  </ul>
+
+</body>
+</html>

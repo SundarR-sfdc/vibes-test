@@ -1,0 +1,86 @@
+<template>
+    <lightning-card title={title} icon-name="standard:account">
+        <div class="slds-p-horizontal_small slds-p-vertical_small">
+            <div class="card-header">
+                <template if:true={logoSrc}>
+                    <img src={logoSrc} alt="Company logo" class="logo"/>
+                </template>
+            </div>
+            <div class="card-grid">
+                <div class="field">
+                    <div class="label">Name</div>
+                    <div class="value"><template if:true={showName}>{name}</template></div>
+                </div>
+                <div class="field">
+                    <div class="label">Industry</div>
+                    <div class="value"><template if:true={showIndustry}>{industry}</template></div>
+                </div>
+                <div class="field">
+                    <div class="label">Phone</div>
+                    <div class="value"><template if:true={showPhone}><template if:true={phone}><a href={phoneHref}>{phone}</a></template></template></div>
+                </div>
+                <div class="field">
+                    <div class="label">Website</div>
+                    <div class="value"><template if:true={showWebsite}><template if:true={website}><a href={websiteHref} target="_blank">{website}</a></template></template></div>
+                </div>
+                <div class="field address">
+                    <div class="label">Billing Address</div>
+                    <div class="value"><template if:true={showBilling}>{billingAddress}</template></div>
+                </div>
+                <div class="field">
+                    <div class="label">Annual Revenue</div>
+                    <div class="value"><template if:true={showAnnualRevenue}>{annualRevenue}</template></div>
+                </div>
+            </div>
+
+            <template if:true={showContacts}>
+                <div class="related-list slds-m-top_small">
+                    <div class="related-header">
+                        <span class="related-title">Contacts</span>
+                        <div class="related-actions">
+                            <lightning-button label="View All" onclick={handleViewContacts} variant="neutral" size="small"></lightning-button>
+                        </div>
+                    </div>
+                    <template if:true={contactsLoaded}>
+                        <template for:each={contactsList} for:item="c">
+                            <div key={c.id} class="related-row">
+                                <a href="javascript:void(0)" data-id={c.id} onclick={handleOpenContact} class="related-name">{c.name}</a>
+                                <div class="related-meta">{c.meta}</div>
+                            </div>
+                        </template>
+                        <template if:true={contactsEmpty}>
+                            <div class="related-empty">No contacts found.</div>
+                        </template>
+                    </template>
+                </div>
+            </template>
+
+            <template if:true={showOpportunities}>
+                <div class="related-list slds-m-top_small">
+                    <div class="related-header">
+                        <span class="related-title">Opportunities</span>
+                        <div class="related-actions">
+                            <lightning-button label="View All" onclick={handleViewOpportunities} variant="neutral" size="small"></lightning-button>
+                        </div>
+                    </div>
+                    <template if:true={opportunitiesLoaded}>
+                        <template for:each={opportunitiesList} for:item="o">
+                            <div key={o.id} class="related-row">
+                                <a href="javascript:void(0)" data-id={o.id} onclick={handleOpenOpportunity} class="related-name">{o.name}</a>
+                                <div class="related-meta">{o.meta}</div>
+                            </div>
+                        </template>
+                        <template if:true={opportunitiesEmpty}>
+                            <div class="related-empty">No opportunities found.</div>
+                        </template>
+                    </template>
+                </div>
+            </template>
+
+            <div class="actions slds-m-top_small">
+                <lightning-button label="Edit" onclick={handleEdit} variant="neutral"></lightning-button>
+                <lightning-button label="Open" onclick={handleOpen} variant="brand"></lightning-button>
+            </div>
+        </div>
+    </lightning-card>
+</template>

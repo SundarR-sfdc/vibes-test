@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__RecordPage</target>
+        <target>lightning__AppPage</target>
+        <target>lightning__HomePage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <objects>
+                <object>Account</object>
+            </objects>
+            <property name="showName" type="Boolean" default="true" label="Show Name" />
+            <property name="showIndustry" type="Boolean" default="true" label="Show Industry" />
+            <property name="showPhone" type="Boolean" default="true" label="Show Phone" />
+            <property name="showWebsite" type="Boolean" default="true" label="Show Website" />
+            <property name="showBilling" type="Boolean" default="true" label="Show Billing Address" />
+            <property name="showAnnualRevenue" type="Boolean" default="true" label="Show Annual Revenue" />
+            <property name="logoUrl" type="String" label="Logo URL (optional)" />
+            <property name="showContacts" type="Boolean" default="true" label="Show Contacts (related list)" />
+            <property name="showOpportunities" type="Boolean" default="true" label="Show Opportunities (related list)" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>
