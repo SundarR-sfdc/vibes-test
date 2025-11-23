@@ -1,18 +1,26 @@
-# Salesforce DX Project: Next Steps
+Docs: accountFlexCard
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+This folder contains design documentation and placeholder screenshots for the accountFlexCard Lightning Web Component.
 
-## How Do You Plan to Deploy Your Changes?
+What is included
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+accountFlexCard-design.md — design doc and admin guide (Markdown).
+accountFlexCard-design.html — simple HTML export of the design doc for viewing in a browser.
+images/ — placeholder images. Replace them with real screenshots captured from your org.
+How to add screenshots
 
-## Configure Your Salesforce DX Project
+Open the Account record and the Lightning App Builder in your org.
+Capture the App Builder properties pane (where the component properties show). Save as docs/images/app-builder.png.
+Capture the Account record page with the flex card visible. Save as docs/images/account-page.png.
+(Optional) Capture the browser DevTools Network tab showing an image request for https://logo.clearbit.com/<domain>. Save as docs/images/clearbit-network.png.
+Re-open docs/accountFlexCard-design.html in a browser to preview.
+Export to PDF (optional) If you want a PDF copy of the HTML or Markdown, use a tool such as pandoc or Chrome's Print → Save as PDF.
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+Example using pandoc (macOS/Linux):
 
-## Read All About It
+Convert Markdown to PDF (requires pandoc + wkhtmltopdf or a PDF engine)
+pandoc docs/accountFlexCard-design.md -o docs/accountFlexCard-design.pdf
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+Or convert HTML to PDF using Google Chrome headless (macOS):
+/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --headless --disable-gpu --print-to-pdf=docs/accountFlexCard-design.pdf docs/accountFlexCard-design.html
+Developer README (component)
